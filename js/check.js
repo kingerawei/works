@@ -67,9 +67,10 @@ function confirmCustomKey() {
     customKeyStatus.style.display = 'block';
     customKeyStatus.style.color = '#333';
     customKeyStatus.textContent = '正在验证，请稍候...';
-
+    const encodedAPI = "aHR0cDovLzM5LjEwNi45Mi40OjUzNjcxL2FwaS9ncm91cC9kcmcv";
+    const apiURL = atob(encodedAPI);
     // 调用已有接口验证密钥
-    fetch("https://api.drg.ip-ddns.com/api/group/drg/", {
+    fetch(apiURL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -139,9 +140,10 @@ confirmKeyButton.addEventListener('click', function () {
     keyStatus.style.display = 'block';
     keyStatus.style.color = '#333';
     keyStatus.textContent = '正在验证，请稍候...';
-
+    const encodedAPI = "aHR0cDovLzM5LjEwNi45Mi40OjUzNjcxL2FwaS9ncm91cC9kcmcv";
+    const apiURL = atob(encodedAPI);
     // 调用已有接口验证密钥
-    fetch("https://api.drg.ip-ddns.com/api/group/drg/", {
+    fetch(apiURL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
