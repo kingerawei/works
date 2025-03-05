@@ -171,6 +171,7 @@ function collectPageData() {
 }
 
 function doDrgGrouping() {
+    document.getElementById('resultCard').style.display = 'none';
     if (!isApiKeyValid()) {
         alert("当前存储的密钥无效，请重新输入！");
         const customKeyStatus = document.getElementById('customKeyStatus');
