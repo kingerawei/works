@@ -182,7 +182,7 @@ function doDrgGrouping() {
     const apiKey = (typeof getApiKeyFromStorage === 'function') ? getApiKeyFromStorage() : "";
     console.log("提交的 payload:", payload);
 
-    fetch("https://donate-farms-pamela-postings.trycloudflare.com/api/group/drg/", {
+    fetch("https://api.drg.ip-ddns.com/api/group/drg/", {
         method: "POST",
         headers: {
             "X-API-KEY": apiKey,

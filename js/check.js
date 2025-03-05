@@ -69,7 +69,7 @@ function confirmCustomKey() {
     customKeyStatus.textContent = '正在验证，请稍候...';
 
     // 调用已有接口验证密钥
-    fetch("https://donate-farms-pamela-postings.trycloudflare.com/api/group/drg/", {
+    fetch("https://api.drg.ip-ddns.com/api/group/drg/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -141,7 +141,7 @@ confirmKeyButton.addEventListener('click', function () {
     keyStatus.textContent = '正在验证，请稍候...';
 
     // 调用已有接口验证密钥
-    fetch("https://donate-farms-pamela-postings.trycloudflare.com/api/group/drg/", {
+    fetch("https://api.drg.ip-ddns.com/api/group/drg/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
