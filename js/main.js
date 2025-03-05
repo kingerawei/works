@@ -181,7 +181,11 @@ function doDrgGrouping() {
     const payload = collectPageData();
     const apiKey = (typeof getApiKeyFromStorage === 'function') ? getApiKeyFromStorage() : "";
     console.log("提交的 payload:", payload);
-    fetch("http://39.106.92.4:53671/api/group/drg/", {
+    // Base64 编码后的 API 地址
+    const encodedAPI = "aHR0cDovLzM5LjEwNi45Mi40OjUzNjcxL2FwaS9ncm91cC9kcmcv";
+    // 解码 Base64 获取真实 API 地址
+    const apiURL = atob(encodedAPI);
+    fetch(apiURL, {
         method: "POST",
         headers: {
             "X-API-KEY": apiKey,
