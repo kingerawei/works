@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<script>
+
+    // 1. 解析 URL 中传递的参数
+    const params = new URLSearchParams(location.search);
+    // 从参数里取 X-API-KEY
+    const apiKey = params.get("X-API-KEY") || "";
+
+    const requiredFields = ["X-API-KEY", 'Index', 'gender', 'age', 'ageDay', 'weight', 'inHospitalTime', 'leavingType', 'zdList', 'ssMainList', 'ssList']; // 根据需求调整必填字段
+
+    // 检查是否存在非法参数
+    const invalidParams = Array.from(params.keys()).filter(key => !requiredFields.includes(key));
+    if (params.size > 11 || invalidParams.length > 0) {
+        // document.body.innerHTML = `非法参数：${invalidParams.join(', ')}`;
+        throw new Error("非法");
+    }
+
+    // 2. 组装提交给后端的 JSON payload（可根据实际需求添加或修改字段）
+    const payload = {
+        Index: params.get("Index") || "",
+        gender: parseInt(params.get("gender") || 0),
+        age: parseInt(params.get("age") || 0),
+        ageDay: parseInt(params.get("ageDay") || 0),
+        weight: parseInt(params.get("weight") || 0),
+        inHospitalTime: parseInt(params.get("inHospitalTime") || 0),
+        leavingType: params.get("leavingType") || "",
+        zdList: params.get("zdList") || "",
+        ssMainList: params.get("ssMainList") || "",
+        ssList: params.get("ssList") || ""
+    };
+
+    // 3. 解码 Base64 获取真实 API 地址
+    //    下面这个示例字符串请自行替换
+    const encodedAPI = "aHR0cDovLzM5LjEwNi45Mi40OjUzNjcxL2FwaS9ncm91cC9kcmcv";
+    const apiURL = atob(encodedAPI);
+
+    // 4. 请求后端接口 (POST)，不管是否错误，接口返回什么就展示什么
+    fetch(apiURL, {
+        method: "POST",
+        headers: {
+            "X-API-KEY": apiKey,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(response => response.json())     // 直接以文本形式拿到响应
+        .then(data => {
+            // 页面只显示接口响应原文
+            document.body.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        })
+        .catch(err => {
+            // 网络错误等异常时，把错误信息直接显示出来
+            document.body.innerText = err.message;
+        });
+</script>
+</body>
+</html>
