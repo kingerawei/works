@@ -57,13 +57,23 @@
         #customModal button {
             cursor: pointer;
         }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
     </style>
 </head>
-<meta name="msvalidate.01" content="D2D94343725D1BA41CC6D9D7B554BD10" />
+<meta name="msvalidate.01" content="D2D94343725D1BA41CC6D9D7B554BD10"/>
 <body>
 <div class="container">
-    <h1>DRG 2.0</h1>
-    <br/>
+    <h1 class="sr-only" style="font-size: 16px">DRG 2.0</h1>
     <h4 class="mb-3">基础信息</h4>
     <!-- 基础信息区域 -->
     <div class="fixed-box mb-3" style="flex-direction: row; flex-wrap: wrap;">
@@ -153,7 +163,7 @@
         </div>
     </div>
 
-        <!-- 结果展示区域 -->
+    <!-- 结果展示区域 -->
     <div class="fixed-box mt-3 result-card" id="resultCard" style="display: none;">
         <div class="row" id="resultContainer">
             <!-- 这里的内容将由 JavaScript 动态填充 -->
@@ -200,8 +210,8 @@
     </div>
 </div>
 
-<!-- 引入数据及业务逻辑 -->    
- <!-- 测试 -->    
+<!-- 引入数据及业务逻辑 -->
+<!-- 测试 -->
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script src="js/check.js"></script>
