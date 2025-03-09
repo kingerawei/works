@@ -226,7 +226,6 @@ function doDrgGrouping() {
                 "adrg": "ADRG",
                 "chsdrg": "CHS-DRG",
                 "drg": "DRG",
-                "ccmcc": "CCMCC",
                 "cclist": "CC列表",
                 "mcclist": "MCC列表",
                 "zzAdrgList": "主诊 ADRG",
