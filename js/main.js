@@ -228,8 +228,8 @@ function doDrgGrouping() {
                 "drg": "DRG",
                 "cclist": "CC列表",
                 "mcclist": "MCC列表",
-                "zzAdrgList": "主诊 ADRG",
-                "zsAdrgList": "次诊 ADRG",
+                "zzAdrgList": "主诊断 ADRG",
+                "zsAdrgList": "主手术 ADRG",
                 "zdInvalList": "无效诊断列表",
                 "ssInvalList": "无效手术列表"
             };
