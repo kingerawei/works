@@ -206,15 +206,61 @@ function doDrgGrouping() {
             return response.json();
         })
         .then(data => {
-            document.getElementById('resultCard').style.display = 'block';
-            document.getElementById('rate').textContent = data.chsdrg || '-';
-            document.getElementById('avgFee').textContent = data.drg || '-';
-            document.getElementById('profit').textContent = data.ccmcc || '-';
-            document.getElementById('status').textContent = data.status || '-';
+            if (!data || Object.keys(data).length === 0) {
+                // console.error('API 返回数据为空');
+                const resultContainer = document.getElementById('resultContainer');
+                resultContainer.innerHTML = "<div class='text-muted'>无结果可展示</div>";
+                document.getElementById('resultCard').style.display = 'block';
+                return;
+            }
+
+            const resultCard = document.getElementById('resultCard');
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = ''; // 清空之前的结果
+
+            // 预定义字段标题映射
+            const fieldMappings = {
+                "status": "状态",
+                "messages": "消息",
+                "mdc": "MDC",
+                "adrg": "ADRG",
+                "chsdrg": "CHS-DRG",
+                "drg": "DRG",
+                "ccmcc": "CCMCC",
+                "cclist": "CC列表",
+                "mcclist": "MCC列表",
+                "zzAdrgList": "主诊 ADRG",
+                "zsAdrgList": "次诊 ADRG",
+                "zdInvalList": "无效诊断列表",
+                "ssInvalList": "无效手术列表"
+            };
+
+            Object.keys(data).forEach(key => {
+                if (!fieldMappings.hasOwnProperty(key) || data[key] === undefined || data[key] === '' || (Array.isArray(data[key]) && data[key].length === 0)) {
+                    return; // 跳过未映射的字段和空值字段
+                }
+
+                let displayValue = Array.isArray(data[key])
+                    ? data[key].join(', ')
+                    : data[key];
+                let displayKey = fieldMappings[key]; // 只展示有映射的字段
+
+                const div = document.createElement('div');
+                div.className = "col-12 d-flex justify-content-start align-items-center py-2";
+                div.innerHTML = `
+                    <div class="text-muted small me-2">${displayKey}:</div>
+                    <div class="h-[9px] text-primary mb-0">${displayValue}</div>
+                `;
+                resultContainer.appendChild(div);
+            });
+
+            resultCard.style.display = 'block';
         })
         .catch(error => {
-            // alert('调用接口出错', error);
             console.error('调用接口出错:', error);
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = "<div class='text-danger'>数据加载失败，请检查网络或重试</div>";
+            document.getElementById('resultCard').style.display = 'block';
         });
 }
 
