@@ -143,7 +143,7 @@ function collectPageData() {
     const ageDay = parseInt(inputs[1].value);
     const weight = parseInt(inputs[2].value);
     const inHospitalTime = parseInt(inputs[3].value);
-    const leavingType = (selects[1].value.trim() === "非死亡") ? "1" : "2";
+    const leavingType = (selects[1].value.trim() === "非死亡") ? "1" : "5";
     const diagnosisRows = document.querySelectorAll('#diagnosisTable tbody tr');
     const zdList = Array.from(diagnosisRows).map(row => row.cells[0].textContent.trim()).join(',');
     const surgeryRows = document.querySelectorAll('#surgeryTable tbody tr');
