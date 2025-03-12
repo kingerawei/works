@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://www.drg.ip-ddns.com/sitemap-88ba189e9e29.xml
