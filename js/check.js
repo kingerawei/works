@@ -67,7 +67,7 @@ function confirmCustomKey() {
     customKeyStatus.style.display = 'block';
     customKeyStatus.style.color = '#333';
     customKeyStatus.textContent = '正在验证，请稍候...';
-    const encodedAPI = "aHR0cHM6Ly8zOS4xMDYuOTIuNDo1MzY3MS9hcGkvZ3JvdXAvZHJnLw==";
+    const encodedAPI = "aHR0cHM6Ly9hcGkuZHJnLmlwLWRkbnMuY29tOjUzNjcxL2FwaS9ncm91cC9kcmcv";
     const apiURL = atob(encodedAPI);
     // 调用已有接口验证密钥
     fetch(apiURL, {
@@ -140,7 +140,7 @@ confirmKeyButton.addEventListener('click', function () {
     keyStatus.style.display = 'block';
     keyStatus.style.color = '#333';
     keyStatus.textContent = '正在验证，请稍候...';
-    const encodedAPI = "aHR0cHM6Ly8zOS4xMDYuOTIuNDo1MzY3MS9hcGkvZ3JvdXAvZHJnLw==";
+    const encodedAPI = "aHR0cHM6Ly9hcGkuZHJnLmlwLWRkbnMuY29tOjUzNjcxL2FwaS9ncm91cC9kcmcv";
     const apiURL = atob(encodedAPI);
     // 调用已有接口验证密钥
     fetch(apiURL, {
