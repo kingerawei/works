@@ -145,7 +145,21 @@ function collectPageData() {
     const inHospitalTime = parseInt(inputs[3].value);
     const leavingType = (selects[1].value.trim() === "非死亡") ? "1" : "5";
     const diagnosisRows = document.querySelectorAll('#diagnosisTable tbody tr');
-    const zdList = Array.from(diagnosisRows).map(row => row.cells[0].textContent.trim()).join(',');
+    let primaryDiagnosis = "";
+    const otherDiagnoses = [];
+
+    diagnosisRows.forEach(row => {
+        const code = row.cells[0].textContent.trim();
+        const radio = row.querySelector('input[type="radio"]');
+        if (radio.checked) {
+            primaryDiagnosis = code; // 选中的主诊断
+        } else {
+            otherDiagnoses.push(code);
+        }
+    });
+
+    // 组装 zdList，确保主诊断排在第一位
+    const zdList = primaryDiagnosis ? [primaryDiagnosis, ...otherDiagnoses].join(',') : otherDiagnoses.join(',');
     const surgeryRows = document.querySelectorAll('#surgeryTable tbody tr');
     const ssList = Array.from(surgeryRows).filter(row => {
         const checkbox = row.querySelector('input[type="checkbox"]');
