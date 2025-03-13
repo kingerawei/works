@@ -196,7 +196,7 @@ function doDrgGrouping() {
     const apiKey = (typeof getApiKeyFromStorage === 'function') ? getApiKeyFromStorage() : "";
     console.log("提交的 payload:", payload);
     // Base64 编码后的 API 地址
-    const encodedAPI = "aHR0cHM6Ly9hcGkuZHJnLmlwLWRkbnMuY29tOjUzNjcxL2FwaS9ncm91cC9kcmcv";
+    const encodedAPI = "aHR0cDovLzM5LjEwNi45Mi40OjUzNjcxL2FwaS9ncm91cC9kcmcv";
     // 解码 Base64 获取真实 API 地址
     const apiURL = atob(encodedAPI);
     fetch(apiURL, {
